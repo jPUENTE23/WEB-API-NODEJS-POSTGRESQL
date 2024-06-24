@@ -1,14 +1,14 @@
 
 
 import express from 'express';
-import { registrar } from '../controllers/authController';
+import { login, registrar } from '../controllers/authController';
 
 
 
 const router = express.Router();
 
 router.post('/registro', registrar);
-router.post('/login');
+router.post('/login', login);
 
 
 export default router;
