@@ -82,6 +82,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
 
         const user = await prisma.findUnique({ where: { correo } })
+        console.log(user)
         if (!user) {
             res.status(404).json({ error: 'Usuario no encontrado' })
             return

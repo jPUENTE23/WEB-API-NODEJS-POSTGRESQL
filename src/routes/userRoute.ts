@@ -2,7 +2,8 @@
 import {NextFunction, Request, Response} from 'express';
 
 import express from 'express';
-
+import { getAllUsers, getUserBydId, updateUser } from '../controllers/usersController';
+import { registrar } from '../controllers/authController';
 import jwt from 'jsonwebtoken';
 
 
@@ -32,10 +33,10 @@ const authToken = (req: Request,res:Response, next: NextFunction) =>{
 }
 
 
-router.post('/', authToken,() => { return console.log("Registrar")})
-router.get('/', authToken, ()=> { return console.log("GetAll")})
-router.get('/:id',authToken, ()=> { return console.log("Un usuario")})
-router.put('/:id', authToken, ()=> {return console.log("Modificar")})
+router.post('/', authToken, registrar)
+router.get('/', authToken, getAllUsers)
+router.get('/:id',authToken, getUserBydId)
+router.put('/:id', authToken, updateUser)
 router.delete('/:id', authToken, ()=> {return console.log("Eliminar usuario")})
 
 
